@@ -1,0 +1,22 @@
+name: Build and Run SAMP Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install sampctl
+      uses: AGraber/sampctl-action@v1
+      with:
+        version: '1.9.1' # optional, 1.9.1 by default
+
+    - name: Build SAMP server
+      run: sampctl p build --forceEnsure
