@@ -2,7 +2,7 @@
 #include "player_model.pwn"
 
 hook OnPlayerConnect(playerid) {
-    CheckIfUserExistsRequest(playerid);
+    LoadUserService(playerid);
     return 1;
 }
 
@@ -28,7 +28,7 @@ Dialog:SignUpDialog(playerid, response, listitem, inputtext[]) {
         else {
             //after create on backend, return hashed password
             format(PlayerInfo[playerid][password], 128, inputtext);
-            OnCreateUserRequest(playerid);
+            CreateUserService(playerid);
             SpawnPlayer(playerid);
         }
     }
@@ -42,7 +42,7 @@ Dialog:SignUpDialog(playerid, response, listitem, inputtext[]) {
 
 Dialog:SignInDialog(playerid, response, listitem, inputtext[]) {
     if (response) {
-        OnCheckUserPasswordRequest(playerid);
+        CheckUserPasswordService(playerid, inputtext);
     }
 
     else {

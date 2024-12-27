@@ -43,8 +43,4 @@
 main() {
 
 }
-cmd:hello(playerid) {
-    print("hekko");
-    return 1;
-}
 
